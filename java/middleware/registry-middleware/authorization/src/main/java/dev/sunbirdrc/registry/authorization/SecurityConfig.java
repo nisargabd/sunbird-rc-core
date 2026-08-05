@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationProvider;
 import org.springframework.security.oauth2.server.resource.authentication.JwtIssuerAuthenticationManagerResolver;
 import org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter;
@@ -29,7 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		HttpSecurity httpConfig = http.csrf().disable();
+		HttpSecurity httpConfig = http.csrf().disable()
+				.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and();
 		Map<String, AuthenticationManager> authenticationManagers = new HashMap<>();
 		this.oAuth2Configuration.getResources().forEach(issuer -> addManager(authenticationManagers, issuer));
 		httpConfig

@@ -110,51 +110,6 @@
         "inviteRoles": [
             "anonymous"
         ],
-        "credentialTemplate": {
-            "@context": [
-                "https://www.w3.org/2018/credentials/v1",
-                {
-                    "@context": {
-                        "@version": 1.1,
-                        "@protected": true,
-                        "Employee": {
-                            "@id": "https://github.com/sunbird-specs/vc-specs#Employee",
-                            "@context": {
-                                "id": "@id",
-                                "@version": 1.1,
-                                "@protected": true,
-                                "name": "schema:Text",
-                                "personalIdentification": "schema:Text",
-                                "documentType": "schema:Text",
-                                "position": "schema:Text",
-                                "department": "schema:Text",
-                                "institution": "schema:Text",
-                                "dateOfHire": "schema:Text",
-                                "exitDate": "schema:Text",
-                                "status": "schema:Text"
-                            }
-                        }
-                    }
-                }
-            ],
-            "type": [
-                "VerifiableCredential"
-            ],
-            "issuanceDate": "2021-08-27T10:57:57.237Z",
-            "credentialSubject": {
-                "type": "Employee",
-                "name": "{{fullName}}",
-                "personalIdentification": "{{personalIdentification}}",
-                "documentType": "{{typeIdentification}}",
-                "position": "{{positionName}}",
-                "department": "{{departmentName}}",
-                "institution": "{{companyName}}",
-                "dateOfHire": "{{admissionDate}}",
-                "exitDate": "{{contractExpiration}}",
-                "status": "{{statusName}}"
-            },
-            "issuer": "did:web:sunbirdrc.dev/vc/Employee"
-        },
         "certificateTemplates": {
             "html": "http://localhost:8081/api/v1/templates/Employee.html"
         }
